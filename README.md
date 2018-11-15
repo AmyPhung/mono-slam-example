@@ -17,9 +17,20 @@ $ rosrun mono-slam mono-slam configuration.cfg /image:=/your_image_topic
 > configuration file contains parameters for the mono-slam algorithm
   and camera calibration.
   Sample configuration files are provided in the "conf" folder
+  
+  
+For my particular setup:
+ ``` 
+ rosrun mono-slam mono-slam src/mono-slam/conf/conf_firewire.cfg /image:=/camera/image_raw/compressed
+ ```
+ 
+Notes:
++ Needed to modify CMakeLists.txt before it worked
++ Currently using [tractor_sim](https://github.com/olinrobotics/tractor_sim) for camera feed and example config files
 
 ## Example videos
 
  - https://www.youtube.com/watch?v=Cf0iKfhnyu4
  - https://www.youtube.com/watch?v=Jjmm9yZY3kA
  - https://www.youtube.com/watch?v=ANNwb4NqlIM
+ 
