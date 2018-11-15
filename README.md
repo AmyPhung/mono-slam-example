@@ -7,10 +7,10 @@ in the 2013.
 [Reference: Russo L.O., Rosa S., Bona B., Matteucci M., "A ROS implementation of the mono-slam algorithm",
 International Journal of Computer Science & Information Technology, Vol. 6 Issue 1, p339](https://www.researchgate.net/publication/269200654_A_ROS_Implementation_of_the_Mono-Slam_Algorithm)
 
-## Installation/Setup:
+## Installation/Setup
 Tested with catkin build on ROS Kinetic, Ubuntu 16.04
 
-## Usage:
+## Usage
 
 ```bash
 $ rosrun mono-slam mono-slam configuration.cfg /image:=/your_image_topic
@@ -40,6 +40,9 @@ Notes:
 + Needed to modify CMakeLists.txt before it worked
 + Currently using [tractor_sim](https://github.com/olinrobotics/tractor_sim) for camera feed and example config files
 + For debugging, `rosrun tf view_frames` creates a PDF to visualize transform tree
+
+## Current Progress
++ Running code displays dots in rviz, unsure if the dots are in the correct place
 
 ## Example videos
 
