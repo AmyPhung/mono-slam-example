@@ -1,12 +1,17 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(mono-slam)
-set(CMAKE_CXX_FLAGS "-O2 -msse4 -DEIGEN_NO_DEBUG -DNDEBUG")
+
+## Either one of these work
+#set(CMAKE_CXX_FLAGS "-O2 -msse4 -DEIGEN_NO_DEBUG -DNDEBUG")
+set(CMAKE_CXX_FLAGS "-std=c++11")
+
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 
-find_package(catkin REQUIRED COMPONENTS cv_bridge tf sensor_msgs cv_bridge roscpp std_msgs image_transport)
-find_package(OpenCV REQUIRED)
+find_package(catkin REQUIRED COMPONENTS OpenCV cv_bridge tf sensor_msgs cv_bridge roscpp std_msgs image_transport)
+## Needed to move this line to the first line for it to build successfully
+# find_package(OpenCV REQUIRED)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -69,17 +74,17 @@ catkin_package(
 # )
 
 ## Declare a cpp executable
-add_executable(mono-slam 
-		src/monoslam_ransac.cpp 
-		#src/camOCV.cpp 
-		src/vslamRansac.cpp 
-		src/RosVSLAMRansac.cpp 
-		src/Patch.cpp 
+add_executable(mono-slam
+		src/monoslam_ransac.cpp
+		#src/camOCV.cpp
+		src/vslamRansac.cpp
+		src/RosVSLAMRansac.cpp
+		src/Patch.cpp
 		src/utils.cpp
-		#src/camOCV.hpp 
-		src/vslamRansac.hpp 
-		src/RosVSLAMRansac.hpp 
-		src/Patch.hpp 
+		#src/camOCV.hpp
+		src/vslamRansac.hpp
+		src/RosVSLAMRansac.hpp
+		src/Patch.hpp
 		src/utils.hpp
 		src/libblur.h
 		src/libblur.cpp
@@ -96,7 +101,6 @@ add_executable(mono-slam
 
 ## Specify libraries to link a library or executable target against
  #target_link_libraries(ludoslam ${catkin_LIBRARIES})
- 
  target_link_libraries(mono-slam ${catkin_LIBRARIES} config++)
 
 #############
@@ -146,3 +150,6 @@ add_executable(mono-slam
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+## Added this line - wouldn't build without it
+include_directories(${catkin_INCLUDE_DIRS})
